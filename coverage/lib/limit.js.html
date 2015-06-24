@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for lib/limit.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../prettify.css">
+    <link rel="stylesheet" href="../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">lib/limit.js</span></h1>
+    <h2>
+        Statements: <span class="metric">13.79% <small>(4 / 29)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">0% <small>(0 / 14)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">0% <small>(0 / 3)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">13.79% <small>(4 / 29)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">lib/</a> &#187; limit.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+/**
+ * [exports 用于控制http的请求数，当超于某个值的时候，直接返回too busy error]
+ * @param  {[type]} options [description]
+ * @return {[type]}         [description]
+ */
+module.exports = limit;
+&nbsp;
+<span class="fstat-no" title="function not covered" >function limit(options){</span>
+  // 超过mid则输出警告
+  // 超过high直接返回error
+<span class="cstat-no" title="statement not covered" >  let mid = parseInt(options.mid);</span>
+<span class="cstat-no" title="statement not covered" >  let high = parseInt(options.high);</span>
+<span class="cstat-no" title="statement not covered" >  if(isNaN(mid) || isNaN(high)){</span>
+<span class="cstat-no" title="statement not covered" >    throw new Error('mid and high must be number');</span>
+  }
+<span class="cstat-no" title="statement not covered" >  if(mid &lt;= 0 || high &lt;= 0){</span>
+<span class="cstat-no" title="statement not covered" >    throw new Error('mid and high must gt 0');</span>
+  }
+<span class="cstat-no" title="statement not covered" >  if(mid &gt;= high){</span>
+<span class="cstat-no" title="statement not covered" >    throw new Error('high must be gt mid');</span>
+  }
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  let handlingReqTotal = 0;</span>
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function limit(next) {</span>
+<span class="cstat-no" title="statement not covered" >    handlingReqTotal++;</span>
+<span class="cstat-no" title="statement not covered" >    if(handlingReqTotal &gt; high){</span>
+<span class="cstat-no" title="statement not covered" >      let err = new Error('K-C-L, There are too many connections handling');</span>
+<span class="cstat-no" title="statement not covered" >      err.status = 429;</span>
+<span class="cstat-no" title="statement not covered" >      throw err;</span>
+    }
+<span class="cstat-no" title="statement not covered" >    if(handlingReqTotal &gt; mid){</span>
+<span class="cstat-no" title="statement not covered" >      console.warn('K-C-L, request achieve %d', handlingReqTotal);</span>
+    }
+<span class="cstat-no" title="statement not covered" >    let res = this.res;</span>
+<span class="cstat-no" title="statement not covered" >    let onfinish = done.bind(null, 'finish');</span>
+<span class="cstat-no" title="statement not covered" >    let onclose = done.bind(null, 'close');</span>
+<span class="cstat-no" title="statement not covered" >    res.once('finish', onfinish);</span>
+<span class="cstat-no" title="statement not covered" >    res.once('close', onclose);</span>
+<span class="fstat-no" title="function not covered" >    function done(event){</span>
+<span class="cstat-no" title="statement not covered" >      handlingReqTotal--;</span>
+<span class="cstat-no" title="statement not covered" >      res.removeListener('finish', onfinish);</span>
+<span class="cstat-no" title="statement not covered" >      res.removeListener('close', onclose);</span>
+    }
+    // yield next;
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return limit;</span>
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 24 2015 16:24:17 GMT+0800 (CST)</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

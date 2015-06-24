@@ -1,0 +1,31 @@
+{
+  "name": "koa-connection-limit",
+  "description": "connection limit middlware for koa",
+  "version": "0.0.1",
+  "author": {
+    "name": "vicanso 小墨鱼",
+    "email": "vicansocanbico@gmail.com"
+  },
+  "keywords": [
+    "koa",
+    "connection limit",
+    "middlware"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vicanso/koa-connection-limit.git"
+  },
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-istanbul": "^0.10.0",
+    "gulp-jshint": "^1.11.0",
+    "gulp-mocha": "^2.1.2",
+    "koa": "^0.21.0"
+  },
+  "readme": "connection limit middlware for koa",
+  "dependencies": {
+    "debug": "*"
+  }
+}
