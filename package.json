@@ -1,7 +1,7 @@
 {
   "name": "koa-connection-limit",
   "description": "connection limit middlware for koa",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "author": {
     "name": "vicanso 小墨鱼",
     "email": "vicansocanbico@gmail.com"
@@ -11,6 +11,7 @@
     "connection limit",
     "middlware"
   ],
+  "main" : "./lib/limit",
   "license": "MIT",
   "repository": {
     "type": "git",
