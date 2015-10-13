@@ -37,7 +37,8 @@ describe('koa-connection-limit', function () {
     let count = total;
     while (count--) {
       setTimeout(function () {
-        request.get('http://localhost:10000/').end(function (err,
+        request.get('http://localhost:' + port + '/').end(function (
+          err,
           res) {
           finished++;
           if (finished === total) {
