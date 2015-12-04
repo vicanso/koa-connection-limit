@@ -9,15 +9,15 @@ $ npm install koa-connection-limit
 ## API
 
 ```js
-var koa = require('koa');
-var koaConnectionLimit = require('koa-connection-limit');
-var app = koa();
+const koa = require('koa');
+const koaConnectionLimit = require('koa-connection-limit');
+const app = koa();
 
 app.use(koaConnectionLimit({
   mid: 5,
   high: 10,
   throwError: false,
-  event: function (status) {
+  change: function (status) {
     // status: low, mid, high
     console.info(status);
   }
@@ -34,41 +34,46 @@ app.use(koaConnectionLimit({
 ## Example
 
 ```js
-var koa = require('koa');
-var router = require('koa-router')();
-var koaConnectionLimit = require('koa-connection-limit');
+'use strict';
+const Koa = require('koa');
+const app = new Koa();
+const koaConnectionLimit = require('koa-connection-limit');
 
+// logger
 
-
-var app = koa();
-
-var index = 0;
-router.get('/', function *(next){
-  yield function(done){
-    setTimeout(done, 3000);
-  };
-  index++;
-  this.body = 'abcd' + index;
+app.use((ctx, next) => {
+  const start = new Date;
+  return next().then(() => {
+    const ms = new Date - start;
+    console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
+  });
 });
 
 
 app.use(koaConnectionLimit({
-  mid: 5,
-  high: 10,
+  high: 2,
+  mid: 1,
   throwError: false,
-  event: function (status) {
-    // status: low, mid, high
-    console.info(status);
+  change: function changeStatus(status) {
+    console.dir(status);
   }
 }));
 
 
-app.use(router.routes());
+app.use((ctx, next) => {
+  const delay = new Promise(function(resolve, reject) {
+    setTimeout(resolve, 3000);
+  });
+  return delay.then(next);
+});
 
-var port = process.env.PORT || 10000;
-app.listen(port);
-console.info('server listen on:' + port);
+// response
 
+app.use(ctx => {
+  ctx.body = 'Hello World';
+});
+
+app.listen(3000);
 ```
 
 

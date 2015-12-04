@@ -1,33 +1,31 @@
 {
-  "name": "koa-connection-limit",
-  "description": "connection limit middlware for koa",
-  "version": "2.0.0",
-  "author": {
-    "name": "vicanso 小墨鱼",
-    "email": "vicansocanbico@gmail.com"
-  },
-  "keywords": [
-    "koa",
-    "connection limit",
-    "middlware"
-  ],
-  "main": "./lib/limit.js",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/vicanso/koa-connection-limit.git"
-  },
-  "readmeFilename": "README.md",
-  "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-istanbul": "^0.10.1",
-    "gulp-jshint": "^1.11.0",
-    "gulp-mocha": "^2.1.3",
-    "koa": "^2.0.0-alpha.3",
-    "koa-router": "^5.2.3",
-    "superagent": "^1.4.0"
-  },
-  "dependencies": {
-    "debug": "^2.2.0"
-  }
+	"name": "koa-connection-limit",
+	"description": "connection limit middlware for koa",
+	"version": "2.0.0",
+	"author": {
+		"name": "vicanso 小墨鱼",
+		"email": "vicansocanbico@gmail.com"
+	},
+	"keywords": [
+		"koa",
+		"connection limit",
+		"middlware"
+	],
+	"main": "./lib/limit.js",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vicanso/koa-connection-limit.git"
+	},
+	"readmeFilename": "README.md",
+	"devDependencies": {
+		"gulp": "^3.9.0",
+		"gulp-istanbul": "^0.10.3",
+		"gulp-jshint": "^2.0.0",
+		"gulp-mocha": "^2.2.0",
+		"koa": "^2.0.0-alpha.3"
+	},
+	"dependencies": {
+		"debug": "^2.2.0"
+	}
 }
