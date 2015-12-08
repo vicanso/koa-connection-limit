@@ -1,7 +1,8 @@
-"use strict";
+'use strict';
 const assert = require('assert');
-const EventEmitter = require('events');
+const Koa = require('koa');
 const koaConnectionLimit = require('../lib/limit');
+const request = require('supertest');
 
 describe('koa-connection-limit', function() {
 	it('should throw error when mid or high is invalid', function(done) {
@@ -53,40 +54,49 @@ describe('koa-connection-limit', function() {
 	});
 
 	it('should set connection limit successful', function(done) {
-		let finishCount = 0;
-		let statusList = ['low', 'mid', 'high'];
-		const hander = koaConnectionLimit({
+		const app = new Koa();
+		app.use(koaConnectionLimit({
 			mid: 1,
 			high: 2
-		}, function(status) {
-			assert.equal(status, statusList.shift());
+		}));
+
+		app.use((ctx) => {
+			return new Promise(function(resolve) {
+				setTimeout(function() {
+					ctx.body = 'OK';
+					resolve();
+				}, 500);
+			});
 		});
+		const total = 3;
+		const server = app.listen();
+		const statusList = [429, 200, 200];
+		let finishCount = 0;
+		const finish = function(err, res) {
 
-		const next = function() {
-			return new Promise(function(resolve, reject) {
-				setTimeout(resolve, 500);
-			});
+			assert.equal(res.status, statusList[finishCount]);
+			finishCount++;
+			if (finishCount === total) {
+				done();
+			}
 		};
+		for (let i = 0; i < total; i++) {
+			setTimeout(function() {
+				request(server)
+					.get('/')
+					.end(finish);
+			}, i * 10);
+		}
+	});
 
-		const request = function() {
-			const res = new EventEmitter();
-			hander({
-				res: res,
-				throw: function(code) {
-					assert.equal(code, 429);
-				}
-			}, next).then(function() {
-				res.emit('close');
-				finishCount++;
-				if (finishCount === 3) {
-					done();
-				}
-			});
-		};
+	it('should onChange event successful', function(done) {
+		const app = new Koa();
+		app.use(koaConnectionLimit((status) => {
+			assert.equal(status, 'low');
+		}));
 
-		request();
-		request();
-		request();
-
-	})
+		request(app.listen())
+			.get('/')
+			.expect(404, done);
+	});
 });
