@@ -57,10 +57,9 @@ describe('koa-connection-limit', function() {
 		let statusList = ['low', 'mid', 'high'];
 		const hander = koaConnectionLimit({
 			mid: 1,
-			high: 2,
-			change: function(status) {
-				assert.equal(status, statusList.shift());
-			}
+			high: 2
+		}, function(status) {
+			assert.equal(status, statusList.shift());
 		});
 
 		const next = function() {

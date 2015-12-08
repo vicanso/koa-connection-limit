@@ -53,10 +53,9 @@ app.use((ctx, next) => {
 app.use(koaConnectionLimit({
   high: 2,
   mid: 1,
-  throwError: false,
-  change: function changeStatus(status) {
-    console.dir(status);
-  }
+  throwError: false
+}, function changeStatus(status) {
+  console.dir(status);
 }));
 
 
