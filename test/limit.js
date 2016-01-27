@@ -99,4 +99,19 @@ describe('koa-connection-limit', function() {
 			.get('/')
 			.expect(404, done);
 	});
+
+
+	it('should onChange event successful when throw an error', function(done) {
+		const app = new Koa();
+		app.use(koaConnectionLimit((status) => {
+			assert.equal(status, 'low');
+		}));
+		app.use(ctx => {
+			i.j = 0;
+		});
+		request(app.listen())
+			.get('/')
+			.expect(500, done);
+	});
+
 });

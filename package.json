@@ -1,7 +1,7 @@
 {
   "name": "koa-connection-limit",
   "description": "connection limit middlware for koa",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "author": {
     "name": "vicanso 小墨鱼",
     "email": "vicansocanbico@gmail.com"
