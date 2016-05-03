@@ -1,5 +1,10 @@
 # connection limit middlware for koa
 
+[![Build Status](https://travis-ci.org/vicanso/koa-connection-limit.svg?style=flat-square)](https://travis-ci.org/vicanso/koa-connection-limit)
+[![Coverage Status](https://img.shields.io/coveralls/vicanso/koa-connection-limit/master.svg?style=flat)](https://coveralls.io/r/vicanso/koa-connection-limit?branch=master)
+[![npm](http://img.shields.io/npm/v/koa-connection-limit.svg?style=flat-square)](https://www.npmjs.org/package/koa-connection-limit)
+[![Github Releases](https://img.shields.io/npm/dm/koa-connection-limit.svg?style=flat-square)](https://github.com/vicanso/koa-connection-limit)
+
 ## Installation
 
 ```bash
