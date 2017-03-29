@@ -22,10 +22,12 @@ app.use(koaConnectionLimit({
   mid: 5,
   high: 10,
   throwError: false,
-  change: function (status) {
-    // status: low, mid, high
-    console.info(status);
+  pass: (ctx) => {
+    return false;
   }
+}, function (status) {
+  // status: low, mid, high
+  console.info(status);
 }));
 ```
 ### Options
@@ -33,7 +35,11 @@ app.use(koaConnectionLimit({
 - `mid` mid connection limit count
 - `high` high connection limit count
 - `throwError` when `true` or `undefined`, the connection count reach high limit count, it will throw error
-- `event` when status change, the event function will be triggered.
+- `pass` if the function return true, the request will be ingore of limit
+
+### onChange
+
+when status change, the function will be triggered
 
 
 ## Example
@@ -58,9 +64,12 @@ app.use((ctx, next) => {
 app.use(koaConnectionLimit({
   high: 2,
   mid: 1,
-  throwError: false
+  throwError: false,
+  pass: (ctx) => {
+    return ctx.url === '/no-limit';
+  },
 }, function changeStatus(status) {
-  console.dir(status);
+  console.info(status);
 }));
 
 

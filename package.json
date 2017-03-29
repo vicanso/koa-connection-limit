@@ -23,20 +23,22 @@
   },
   "readmeFilename": "README.md",
   "scripts": {
+    "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
     "test": "node ./node_modules/.bin/eslint ./lib/*.js && NODE_ENV=test node ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha ./test/*.js --"
   },
   "devDependencies": {
-    "eslint": "^3.6.1",
-    "eslint-config-airbnb": "^12.0.0",
-    "eslint-plugin-import": "^1.16.0",
-    "eslint-plugin-jsx-a11y": "^2.2.2",
-    "eslint-plugin-react": "^6.3.0",
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.8.0",
     "istanbul": "^0.4.5",
-    "koa": "^2.0.0",
-    "mocha": "^2.5.3",
-    "supertest": "^2.0.0"
+    "jsdoc": "^3.4.3",
+    "koa": "^2.2.0",
+    "mocha": "^3.1.0",
+    "supertest": "^3.0.0"
   },
   "dependencies": {
-    "debug": "^2.2.0"
+    "debug": "^2.6.3"
   }
 }
