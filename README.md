@@ -36,6 +36,7 @@ app.use(koaConnectionLimit({
 - `high` high connection limit count
 - `throwError` when `true` or `undefined`, the connection count reach high limit count, it will throw error
 - `pass` if the function return true, the request will be ingore of limit
+- `err` the custom define error, optional
 
 ### onChange
 
